@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100vh;
+}
+
+#logo {
+    width: 20vh;
+    height: 20vh;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vh;
+    background-color: rgb(238, 238, 238);
+}
+
+ul {
+    display: flex;
+    width: 40vh;
+    justify-content: space-between;
+}
+
+li {
+    display: flex;
+    font-size: 2.0vh;
+    list-style: none;
+    margin: 2px;
+}
+.destaque{
+    display: flex;
+    flex-direction: row ;
+    justify-content: center;
+    align-items: center;
+    background-color: blueviolet;  
+}
+
+#saudacao>p{
+    font-size: 2vh;
+    margin: 1vh;
+}
+#saudacao{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+    width: 100%;
+}
+
+#destaque_image {
+    width: 50%;
+    height: 40%;
+    background-color: aquamarine;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 80%;
+    border: 3px solid black;
+}
+
+.sobre{
+    display: flex;
+    flex-direction: column;
+    height: 20vh;
+    background-color: aquamarine;
+}
+.sobre>p{
+    font-size: 1.5vh;
+    margin: 0.5vh;
+}
