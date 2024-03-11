@@ -104,6 +104,24 @@ p {
     height: 40vh;
 }
 
+#servicos>ul{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1vh;
+}
+
+#servicos>ul>.servico {
+    display: flex;
+    flex-direction: column;
+    min-width: 15vh;
+    max-width: 50vh;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    min-height: 40vh;
+}
+
 .depoimento {
     border-left: 5px solid #007bff;
     padding-left: 10px;
@@ -120,7 +138,7 @@ p {
 #contatos>form {
     display: flex;
     flex-direction: column;
-    height: 50vh;
+    max-height: 50vh;
 
 }
 
