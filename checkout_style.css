@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    padding-inline: 5vh;
+}
+
+section{
+    min-height: 100%;
+
+}
+
+.produto {
+    height: 08vh;
+    width: 97%;
+    border-radius: 10px;
+    border: 2px solid black;
+    display: grid;
+    grid-template-columns: 20% 30% 15% 10% 11% 10%;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+}
+
+#resumo {
+    width: 80%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 30px 30px 10px 30px 50px 50px 50px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(185, 209, 229);
+}
+
+#direita{
+    display: flex;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+
+#esquerda{
+    display: block;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+#endereco {
+    min-height: 100px;
+
+    padding-inline: 20px;
+}
+
+#carrinho {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+
+}
+
