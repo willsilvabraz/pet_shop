@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Madimi+One&display=swap');
+
 * {
+    font-family: "Madimi One", sans-serif;
     margin: 0;
     padding: 0;
     list-style: none;
+    text-decoration: none;
 }
 
 header {
@@ -33,9 +37,14 @@ footer {
     grid-template-columns: 1fr 1fr;
     gap: 2vh;
     grid-template-rows: 12vh;
-    background-color: #074E1B;
+    background-color: #000000;
 
 }
+
+footer>nav>p {
+    color: white;
+}
+
 
 footer>nav {
     display: flex;
@@ -128,7 +137,8 @@ section {
     margin-bottom: 3vh;
     border-radius: 7px;
     border: 0.1px solid rgb(12, 12, 12);
-    padding-bottom: 2vh rgb(0, 0, 0)
+    padding-bottom: 2vh rgb(0, 0, 0);
+    margin-bottom: 70px;
 }
 
 .depoimento>img {
@@ -163,23 +173,96 @@ section {
     flex-wrap: wrap;
     align-items: center;
     background-color: rgb(142, 228, 204);
+    justify-content: center;
 }
 
 #produtos>.produto {
     background-color: white;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    min-width: 15vh;
-    max-width: 30vh;
+    width: 200px;
     border: 1px solid #0b0b0b;
     border-radius: 10px;
     padding: 10px;
     margin: 2vh;
     margin-bottom: 20px;
-    height: 45vh;
+    min-height: 300px;
+}
+
+#produtos>.produto>p{
+    width: 80%;
+}
+
+#produtos>.produto>h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 16px;
 }
 
 #produtos > .produto > img {
     display: flex;
-    max-width: 150px;
+    max-width: 100px;
+}
+
+#contato{
+    padding-top: 0;
+    height: 40vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 250px;
+}
+
+#contato > form{
+    display: grid;
+    grid-template-rows: 5vh 5vh 0 100px 5vh;
+    gap: 2vh;
+}
+
+#contato > form > textarea{
+    resize: none;
+}
+
+#contato > nav > ul > li {
+    display: grid;
+    grid-template-columns: 7vh 20vh;
+    justify-content: end;
+}
+
+#contato > nav > ul {
+    margin-top: 15%;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+}
+
+@media (max-width: 1076px){
+
+    #noticias {
+        grid-template-columns: 1fr 1fr 1fr ;
+    }
+
+}
+
+@media (max-width: 830px){
+
+    #noticias {
+        grid-template-columns: 1fr 1fr ;
+    }
+
+    #contato{
+        grid-template-columns: 1fr;
+        height: 80vh;
+    }
+
+}
+
+@media (max-width: 588px){
+
+    #noticias {
+        grid-template-columns: 1fr ;
+    }
+
 }
