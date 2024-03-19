@@ -7,6 +7,10 @@
     list-style: none;
     text-decoration: none;
 }
+html{
+    scroll-behavior: smooth;
+    scroll-padding-top: 7vh;
+}
 
 header {
     position: fixed;
@@ -30,6 +34,11 @@ header>nav>ul>li {
 header>nav>ul>li>a {
     font-size: 3vh;
     color: white;
+}
+
+header>nav>ul>li>a:hover {
+    font-size: 3vh;
+    color: rgb(158, 125, 59);
 }
 
 footer {
@@ -70,7 +79,7 @@ body {
     display: grid;
     grid-template-rows: auto auto;
     justify-content: center;
-    background-color: aquamarine;
+    background-color: rgb(107, 222, 212);
 }
 
 header>img {
@@ -78,7 +87,6 @@ header>img {
 }
 
 section {
-    padding-top: 10vh;
     margin-inline: 5vh;
 }
 
@@ -168,6 +176,7 @@ section {
 }
 
 #produtos {
+    border-top: 2px solid rgb(0, 0, 0);
     margin: 0;
     display: flex;
     flex-wrap: wrap;
@@ -232,11 +241,49 @@ section {
     justify-content: end;
 }
 
+#contato > nav > ul > li > a{
+    color: rgb(184, 184, 184);
+}
+
 #contato > nav > ul {
     margin-top: 15%;
     display: grid;
     grid-template-columns: 1fr 1fr ;
 }
+
+#home {
+    margin-top: 10vh;
+    padding: 10vh;
+    padding-bottom: 0;
+    display: grid;
+    gap: 4vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    padding-bottom: 15vh;
+    
+    border-radius:10px 10px 0px 0px ;
+}
+
+#home>img {
+    width: 100%;
+    border-radius:10px 100px 10px 100px ;
+}
+
+#home>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#sobre{
+    border-radius:0px 0px 10px 10px ;
+    background-color: rgb(107, 222, 212);
+    display: grid;
+    grid-template-columns: 80%;
+}
+
 
 @media (max-width: 1076px){
 
