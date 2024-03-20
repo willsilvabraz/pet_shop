@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="checkout_style.css">
+    <link rel="stylesheet" href="styles/checkout.css">
 </head>
 
 <body>
@@ -19,8 +18,15 @@
                 <h1>produtos</h1>
                 <div class="produto">
                     <img src="" alt="">
+                    <p id="">Descrição</p>
+                    <p id="">Quantidade</p>
+                    <p id="">Preco</p>
+                    <p>Total</p>
+                    </div>
+                <div class="produto">
+                    <img src="" alt="">
                     <p id="descricao">produto tal de tal material para tal modalidade</p>
-                    <p id="quantidade">2 Uni</p>
+                    <p id="quantidade"><button>-</button> 0 <button>+</button></p>
                     <p id="preco">12,99R$</p>
                     <p>25,98</p>
                     <button>Ecluir</button>
@@ -33,74 +39,17 @@
                     <p>25,98</p>
                     <button>Ecluir</button>
                 </div>
-                <div class="produto">
-                    <img src="" alt="">
-                    <p id="descricao">produto tal de tal material para tal modalidade</p>
-                    <p id="quantidade">2 Uni</p>
-                    <p id="preco">12,99R$</p>
-                    <p>25,98</p>
-                    <button>Ecluir</button>
-                </div>
-                <div class="produto">
-                    <img src="" alt="">
-                    <p id="descricao">produto tal de tal material para tal modalidade</p>
-                    <p id="quantidade">2 Uni</p>
-                    <p id="preco">12,99R$</p>
-                    <p>25,98</p>
-                    <button>Ecluir</button>
-                </div>
-                <div class="produto">
-                    <img src="" alt="">
-                    <p id="descricao">produto tal de tal material para tal modalidade</p>
-                    <p id="quantidade">2 Uni</p>
-                    <p id="preco">12,99R$</p>
-                    <p>25,98</p>
-                    <button>Ecluir</button>
-                </div>
-                <div class="produto">
-                    <img src="" alt="">
-                    <p id="descricao">produto tal de tal material para tal modalidade</p>
-                    <p id="quantidade">2 Uni</p>
-                    <p id="preco">12,99R$</p>
-                    <p>25,98</p>
-                    <button>Ecluir</button>
-                </div>
-                <div class="produto">
-                    <img src="" alt="">
-                    <p id="descricao">produto tal de tal material para tal modalidade</p>
-                    <p id="quantidade">2 Uni</p>
-                    <p id="preco">12,99R$</p>
-                    <p>25,98</p>
-                    <button>Ecluir</button>
-                </div>
-                <div class="produto">
-                    <img src="" alt="">
-                    <p id="descricao">produto tal de tal material para tal modalidade</p>
-                    <p id="quantidade">2 Uni</p>
-                    <p id="preco">12,99R$</p>
-                    <p>25,98</p>
-                    <button>Ecluir</button>
-                </div>
-                
-                
             </div>
 
-            <div id="endereco">
-                <h1>Consulta de CEP</h1>
-                <label for="cepInput">Digite o CEP:</label>
-                <input type="text" id="cepInput">
-                <button onclick="buscarEndereco()">Buscar</button>
-                <div id="endereco"></div>
-            </div>
         </section>
-
+        
         <section id="direita">
             <form id="resumo">
                 <h1>Totais</h1>
                 <h2>Resumo do pedido</h2>
-                <p>Valor</p>
+                <p id="valor">Valor</p>
                 <p>Desconto</p>
-                <p>Total</p>
+                <p id="total">Total</p>
                 <label for="pagamento">Forma de pagamento
                     <input id="pagamento" list="form_pagamento">
                 </label>
@@ -112,10 +61,17 @@
                     <option value="Boleto"></option>
                 </datalist>
             </form>
+            <div id="endereco">
+                <h1>Consulta de CEP</h1>
+                <label for="cepInput">Digite o CEP:</label>
+                <input type="text" id="cepInput">
+                <button onclick="buscarEndereco()">Buscar</button>
+                <div id="endereco"></div>
+            </div>
         </section>
     </main>
     <footer>
-
+        
     </footer>
     <script>
         function buscarEndereco() {
@@ -131,10 +87,12 @@
                         var endereco = `CEP: ${data.cep}, ${data.logradouro}, ${data.bairro}, ${data.localidade}, ${data.uf}`;
                         document.getElementById('endereco').innerText = endereco;
                     }
-                })
-                .catch(error => console.error('Erro:', error));
+                }).catch(error => console.error('Erro:', error));
         }
+
+
     </script>
+    <script src="scripts/checkout.js"></script>
 </body>
 
 </html>

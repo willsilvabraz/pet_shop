@@ -7,11 +7,16 @@ label{
     display: flex;
     flex-direction: column;
 }
+html{
+    width: 100%;
+    background-color: aqua;
+}
 
 main{
     display: grid;
     grid-template-columns: 60% 40%;
     padding-inline: 5vh;
+    background-color: aquamarine;
 }
 
 section{
@@ -30,9 +35,12 @@ section{
     justify-content: center;
     align-items: center;
 }
+.produto > p > button{
+   width: 2vh;
+}
 
 #resumo {
-    width: 80%;
+    width: 100%;
     height: 100%;
     display: grid;
     grid-template-rows: 30px 30px 10px 30px 50px 50px 50px;
@@ -43,9 +51,12 @@ section{
 }
 
 #direita{
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
     min-height: 80vh;
+    border-radius: 10px;
+    border: 2px solid black;
 }
 
 
@@ -58,7 +69,6 @@ section{
 
 #endereco {
     min-height: 100px;
-
     padding-inline: 20px;
 }
 
