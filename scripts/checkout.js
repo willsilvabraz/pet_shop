@@ -1,24 +1,29 @@
-const total = document.getElementById('total');
+function addToCart(event) {
+    const product = event.target.parentNode;
+    const productName = product.querySelector('h2').innerText;
+    const productImage = product.querySelector('img').src;
+   // const productPrice = product.querySelector('p:nth-child(2)').innerText;
 
-let produtor = "Arroz";
-let quant = 2;
-let precoUnitario = 4.99;
-let precoTotal = quant * precoUnitario;
+    // Cria um objeto para representar o produto
+    const productData = {
+        name: productName,
+        image: productImage
+    //    price: productPrice
+    };
 
-document.write(`Preço total R$ ${ precoTotal} <br>`);
-console.log(new Intl.NumberFormat('pt-BR').format(precoTotal));
+    // Obtém o carrinho atual do armazenamento local ou cria um novo array vazio
+    let cart = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-document.write(`Preco Total ${precoTotal.toLocaleString('pr-BR', 
-{style: 'currency', currency: 'BRL' }) } `);
+    // Adiciona o produto ao carrinho
+    cart.push(productData);
 
-console.log(precoTotal);
+    // Salva o carrinho atualizado de volta no armazenamento local
+    localStorage.setItem('carrinho', JSON.stringify(cart));
+    console.log(localStorage);
+}
 
-total.innerHTML +=  " " + precoTotal;
+const buyButtons = document.querySelectorAll('.buy-btn');
 
-
-
-const produto = {
-    descricao: "",
-    preco: 0,
-    quantidade: 0
-};
+buyButtons.forEach(button => {
+    button.addEventListener('click', addToCart);
+});

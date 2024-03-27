@@ -14,35 +14,12 @@
     </header>
     <main>
         <section id="esquerda">
-            <div id="carrinho">
-                <h1>produtos</h1>
-                <div class="produto">
-                    <img src="" alt="">
-                    <p id="">Descrição</p>
-                    <p id="">Quantidade</p>
-                    <p id="">Preco</p>
-                    <p>Total</p>
-                    </div>
-                <div class="produto">
-                    <img src="" alt="">
-                    <p id="descricao">produto tal de tal material para tal modalidade</p>
-                    <p id="quantidade"><button>-</button> 0 <button>+</button></p>
-                    <p id="preco">12,99R$</p>
-                    <p>25,98</p>
-                    <button>Ecluir</button>
-                </div>
-                <div class="produto">
-                    <img src="" alt="">
-                    <p id="descricao">produto tal de tal material para tal modalidade</p>
-                    <p id="quantidade">2 Uni</p>
-                    <p id="preco">12,99R$</p>
-                    <p>25,98</p>
-                    <button>Ecluir</button>
-                </div>
-            </div>
+            <ul id="carrinho">
+
+            </ul>
 
         </section>
-        
+
         <section id="direita">
             <form id="resumo">
                 <h1>Totais</h1>
@@ -71,9 +48,49 @@
         </section>
     </main>
     <footer>
-        
+
     </footer>
+    <script src="scripts/checkout.js"></script>
+    
     <script>
+        console.log(JSON.parse(localStorage.getItem('produto')));
+
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('produto'));
+            const cartList = document.getElementById('carrinho');
+
+            // Limpa o conteúdo atual do carrinho
+            cartList.innerHTML = '';
+
+            // Verifica se há itens no carrinho
+            if (cart && cart.length > 0) {
+                // Loop através de cada item do carrinho e adiciona à lista
+                cart.forEach(item => {
+                    const cartItem = document.createElement('li');
+
+                    const itemImage = document.createElement('img');
+                    itemImage.src = item.image;
+                    itemImage.alt = item.name;
+                    cartItem.appendChild(itemImage);
+
+                    const itemName = document.createElement('p');
+                    itemName.textContent = item.name;
+                    cartItem.appendChild(itemName);
+
+                    const itemPrice = document.createElement('p');
+                    itemPrice.textContent = item.price;
+                    cartItem.appendChild(itemPrice);
+
+                    cartList.appendChild(cartItem);
+                });
+            } else {
+                // Se o carrinho estiver vazio, exibe uma mensagem
+                cartList.innerHTML = '<p>Carrinho vazio</p>';
+            }
+
+            window.onload = displayCart;
+        }
+
         function buscarEndereco() {
             var cep = document.getElementById('cepInput').value;
             var url = `https://viacep.com.br/ws/${cep}/json/`;
@@ -92,7 +109,7 @@
 
 
     </script>
-    <script src="scripts/checkout.js"></script>
+
 </body>
 
 </html>
