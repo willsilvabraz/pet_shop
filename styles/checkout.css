@@ -30,11 +30,24 @@ section{
     border-radius: 10px;
     border: 2px solid black;
     display: grid;
-    grid-template-columns: 20% 30% 15% 10% 11% 10%;
+    grid-template-columns: 10% 20% 35% 10% 10% 10%;
     gap: 4px;
     justify-content: center;
     align-items: center;
 }
+
+.produto > div {
+    display: flex;
+    flex-direction: row;
+}
+
+.produto > div > button {
+    width: 15px;
+}
+
+.produto img{
+    width: 50px;
+} 
 .produto > p > button{
    width: 2vh;
 }

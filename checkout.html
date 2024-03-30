@@ -15,7 +15,7 @@
     <main>
         <section id="esquerda">
             <ul id="carrinho">
-
+                <li>sdfsd</li>
             </ul>
 
         </section>
@@ -50,13 +50,11 @@
     <footer>
 
     </footer>
-    <script src="scripts/checkout.js"></script>
-    
-    <script>
-        console.log(JSON.parse(localStorage.getItem('produto')));
 
+    <script src="scripts/checkout.js"></script>
+    <script>
         function displayCart() {
-            const cart = JSON.parse(localStorage.getItem('produto'));
+            const cart = JSON.parse(localStorage.getItem('cart'));
             const cartList = document.getElementById('carrinho');
 
             // Limpa o conteúdo atual do carrinho
@@ -65,8 +63,9 @@
             // Verifica se há itens no carrinho
             if (cart && cart.length > 0) {
                 // Loop através de cada item do carrinho e adiciona à lista
-                cart.forEach(item => {
+                cart.forEach((item, index) => {
                     const cartItem = document.createElement('li');
+                    cartItem.className = "produto";
 
                     const itemImage = document.createElement('img');
                     itemImage.src = item.image;
@@ -77,24 +76,46 @@
                     itemName.textContent = item.name;
                     cartItem.appendChild(itemName);
 
+                    const itemDescricao = document.createElement('p');
+                    itemDescricao.textContent = item.descricao;
+                    cartItem.appendChild(itemDescricao);
+
                     const itemPrice = document.createElement('p');
                     itemPrice.textContent = item.price;
                     cartItem.appendChild(itemPrice);
 
-                    cartList.appendChild(cartItem);
+                    const quant = document.createElement('div');
+                    quant.className = 'quant';
+                        const btn_menos = document.createElement('button');
+                        btn_menos.textContent = '-';
+                        quant.appendChild(btn_menos);
+
+                        const quantidade = document.createElement('p');
+                        quantidade.textContent = item.quantidade;
+                        quant.appendChild(quantidade);
+
+                        const btn_mais = document.createElement('button');
+                        btn_mais.textContent = '+';
+                        btn_mais.addEventListener('click', function(e){
+                            cart[index].quantidade += 1;
+                            quantidade.textContent = item.quantidade;
+                        })
+                        quant.appendChild(btn_mais);
+
+                    cartItem.appendChild(quant);
+                    
+                   cartList.appendChild(cartItem);
                 });
             } else {
                 // Se o carrinho estiver vazio, exibe uma mensagem
                 cartList.innerHTML = '<p>Carrinho vazio</p>';
             }
-
-            window.onload = displayCart;
         }
-
+        
         function buscarEndereco() {
             var cep = document.getElementById('cepInput').value;
             var url = `https://viacep.com.br/ws/${cep}/json/`;
-
+            
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
@@ -105,8 +126,9 @@
                         document.getElementById('endereco').innerText = endereco;
                     }
                 }).catch(error => console.error('Erro:', error));
-        }
-
+            }
+            
+            window.onload = displayCart;
 
     </script>
 
