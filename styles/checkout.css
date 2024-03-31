@@ -46,11 +46,14 @@ section{
 }
 
 .produto img{
-    width: 50px;
+    width: 45px;
+    border-radius: 30%;
 } 
 .produto > p > button{
    width: 2vh;
 }
+
+
 
 #resumo {
     width: 100%;
@@ -91,4 +94,3 @@ section{
     gap: 2px;
 
 }
-

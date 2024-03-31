@@ -15,29 +15,12 @@
     <main>
         <section id="esquerda">
             <ul id="carrinho">
-                <li>sdfsd</li>
+    
             </ul>
 
         </section>
 
         <section id="direita">
-            <form id="resumo">
-                <h1>Totais</h1>
-                <h2>Resumo do pedido</h2>
-                <p id="valor">Valor</p>
-                <p>Desconto</p>
-                <p id="total">Total</p>
-                <label for="pagamento">Forma de pagamento
-                    <input id="pagamento" list="form_pagamento">
-                </label>
-                <button>Finalizar compra</button>
-                <datalist id="form_pagamento">
-                    <option value="Dinheiro"></option>
-                    <option value="Pix"></option>
-                    <option value="Cartao"></option>
-                    <option value="Boleto"></option>
-                </datalist>
-            </form>
             <div id="endereco">
                 <h1>Consulta de CEP</h1>
                 <label for="cepInput">Digite o CEP:</label>
@@ -45,6 +28,23 @@
                 <button onclick="buscarEndereco()">Buscar</button>
                 <div id="endereco"></div>
             </div>
+            <form id="resumo">
+                <h1>Totais</h1>
+                <h2>Resumo do pedido</h2>
+                <p id="valor">Valor</p>
+                <p>Desconto</p>
+                <p id="total">Total</p>
+                <label for="form_pagamento">Forma de pagamento
+                    <select id="form_pagamento">
+                        <option value=""></option>
+                        <option value="Dinheiro">Dinheiro</option>
+                        <option value="Pix">Pix</option>
+                        <option value="Cartao">Cartao</option>
+                        <option value="Boleto">Boleto</option>
+                    </select>
+                </label>
+                <button>Finalizar compra</button>
+            </form>
         </section>
     </main>
     <footer>
@@ -53,15 +53,42 @@
 
     <script src="scripts/checkout.js"></script>
     <script>
+
+
+        const apenasvalores = (str) => str.replace(/[^0-9,.]/g, '').replace(/,/g, '.');
+        function calcPreco(){
+            var valorPreco = 0;
+            const form = document.querySelector('form');
+            const resumoValor = form.querySelector('p:nth-child(3)')
+
+            const cart_checkout = document.getElementById('carrinho');
+            const li = cart_checkout.querySelectorAll('li');
+
+            li.forEach(item =>{
+                var preco = item.querySelector('p:nth-child(4)').innerHTML
+                var quantidade = item.querySelector('div')
+                var quant = quantidade.querySelector('p:nth-child(2)').innerHTML
+                
+                var valor = apenasvalores(preco)
+                valorPreco += parseFloat(valor) * parseFloat(quant);
+            })
+            console.clear();
+            resumoValor.innerHTML = `Valor ${valorPreco.toFixed(2)}`
+            console.log(resumoValor.innerHTML)
+
+        }
+
         function displayCart() {
+            const formPagamento = document.querySelector('form_pagamento')
             const cart = JSON.parse(localStorage.getItem('cart'));
             const cartList = document.getElementById('carrinho');
-
+            
             // Limpa o conteúdo atual do carrinho
             cartList.innerHTML = '';
-
+            
             // Verifica se há itens no carrinho
             if (cart && cart.length > 0) {
+                console.log(formPagamento);
                 // Loop através de cada item do carrinho e adiciona à lista
                 cart.forEach((item, index) => {
                     const cartItem = document.createElement('li');
@@ -88,6 +115,13 @@
                     quant.className = 'quant';
                         const btn_menos = document.createElement('button');
                         btn_menos.textContent = '-';
+                        btn_menos.addEventListener('click', function(e){
+                            if(cart[index].quantidade > 0){
+                                cart[index].quantidade -= 1;
+                            }
+                            quantidade.textContent = item.quantidade;
+                            calcPreco();
+                        })
                         quant.appendChild(btn_menos);
 
                         const quantidade = document.createElement('p');
@@ -99,6 +133,7 @@
                         btn_mais.addEventListener('click', function(e){
                             cart[index].quantidade += 1;
                             quantidade.textContent = item.quantidade;
+                            calcPreco();
                         })
                         quant.appendChild(btn_mais);
 
@@ -106,10 +141,12 @@
                     
                    cartList.appendChild(cartItem);
                 });
+                calcPreco();
             } else {
                 // Se o carrinho estiver vazio, exibe uma mensagem
                 cartList.innerHTML = '<p>Carrinho vazio</p>';
             }
+            
         }
         
         function buscarEndereco() {
