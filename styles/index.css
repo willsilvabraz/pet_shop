@@ -9,7 +9,7 @@
 }
 html{
     scroll-behavior: smooth;
-    scroll-padding-top: 7vh;
+    scroll-padding-top: 20px;
 }
 
 header {
@@ -40,6 +40,11 @@ header>nav>ul>li>a:hover {
     font-size: 3vh;
     color: rgb(158, 125, 59);
 }
+
+header>img {
+    height: 80%;
+}
+
 
 footer {
     display: grid;
@@ -82,9 +87,6 @@ body {
     background-color: rgb(107, 222, 212);
 }
 
-header>img {
-    height: 80%;
-}
 
 section {
     margin-inline: 5vh;
@@ -277,13 +279,6 @@ section {
     align-items: center;
 }
 
-#sobre{
-    border-radius:0px 0px 10px 10px ;
-    background-color: rgb(107, 222, 212);
-    display: grid;
-    grid-template-columns: 80%;
-}
-
 
 @media (max-width: 1076px){
 
@@ -312,4 +307,31 @@ section {
         grid-template-columns: 1fr ;
     }
 
+}
+#servicos{
+
+}
+
+#servicos ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    display:  flex;
+    flex-wrap: wrap;
+}
+
+.servico{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    width: 350px;
+    height: 500px;
+    background-color: rgb(72, 179, 170);
+    margin: 2vh;
+}
+
+.servico h2{
+    font-size: 110%;
 }
