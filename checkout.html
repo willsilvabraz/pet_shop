@@ -129,8 +129,8 @@
                             if(cart[index].quantidade > 0){
                                 cart[index].quantidade -= 1;
                             }
-                            quantidade.textContent = item.quantidade;
-                            calcPreco();
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            displayCart();
                         })
                         quant.appendChild(btn_menos);
 
@@ -142,8 +142,8 @@
                         btn_mais.textContent = '+';
                         btn_mais.addEventListener('click', function(e){
                             cart[index].quantidade += 1;
-                            quantidade.textContent = item.quantidade;
-                            calcPreco();
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            displayCart();
                         })
                         quant.appendChild(btn_mais);
 
